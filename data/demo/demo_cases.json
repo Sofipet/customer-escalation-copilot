@@ -1,0 +1,17 @@
+[
+  {
+    "case_id": "case_001",
+    "title": "Germany manual override conflict after 2409",
+    "escalation_text": "Customer in Germany cannot complete quote approval after 2409. A support article says manual override is allowed, but release notes suggest approval workflow changed. The deal is a strategic renewal. What should support do next?"
+  },
+  {
+    "case_id": "case_002",
+    "title": "Strategic renewal approval failure",
+    "escalation_text": "A strategic renewal deal is blocked during quote approval. Support wants to know whether manual override is still allowed and which guidance should be trusted."
+  },
+  {
+    "case_id": "case_003",
+    "title": "Outdated KB versus policy",
+    "escalation_text": "A support engineer is following an older KB article for Germany, but a newer policy document appears stricter. Which source should be followed and what should the next step be?"
+  }
+]

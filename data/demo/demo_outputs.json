@@ -1,0 +1,272 @@
+[
+  {
+    "case_id": "case_001",
+    "title": "Germany manual override conflict after 2409",
+    "escalation_text": "Customer in Germany cannot complete quote approval after 2409. A support article says manual override is allowed, but release notes suggest approval workflow changed. The deal is a strategic renewal. What should support do next?",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "release_notes_2409_approval_workflow_change__sec00__chunk00",
+        "file_name": "release_notes_2409_approval_workflow_change.md",
+        "title": "Release 2409 Approval Workflow Change",
+        "section_title": "Overview",
+        "document_type": "release_note",
+        "version": "2409",
+        "source_authority": "high",
+        "semantic_score": 0.6960121005564498,
+        "final_score": 0.7124078653616923,
+        "chunk_text": "Release 2409 changed approval workflow behavior for selected quote categories and introduced tighter controls around manual override."
+      },
+      {
+        "chunk_id": "policy_quote_approval_2025__sec05__chunk00",
+        "file_name": "policy_quote_approval_2025.md",
+        "title": "Quote Approval Policy 2025",
+        "section_title": "Support guidance",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.6278613668152923,
+        "final_score": 0.70810988842994,
+        "chunk_text": "When customers report approval failures, support should identify the deal type, contract value, discount level, region, and release context before recommending the next step.\nIf documents disagree, support should prefer the newest high-authority guidance."
+      },
+      {
+        "chunk_id": "policy_regional_approval_rules__sec02__chunk00",
+        "file_name": "policy_regional_approval_rules.md",
+        "title": "Regional Approval Rules",
+        "section_title": "Operational routing",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.6265502723443908,
+        "final_score": 0.707257677023854,
+        "chunk_text": "Cases involving approval failures in Germany should be routed to the Germany support queue first if a region-specific incident is active.\nSupport may not rely on legacy manual override guidance unless the current policy explicitly allows it."
+      },
+      {
+        "chunk_id": "policy_quote_approval_2025__sec02__chunk00",
+        "file_name": "policy_quote_approval_2025.md",
+        "title": "Quote Approval Policy 2025",
+        "section_title": "Manual override policy",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.6205220003402572,
+        "final_score": 0.7033393002211672,
+        "chunk_text": "Manual override is permitted only for standard non-strategic deals with workflow failures caused by routing or timeout errors.\nManual override must not be used for strategic renewals, protected exception cases, or deals affected by release-restricted workflow behavior.\nSupport must always verify whether a release-specific restriction is active before using manual override."
+      },
+      {
+        "chunk_id": "policy_strategic_renewal_exceptions__sec03__chunk00",
+        "file_name": "policy_strategic_renewal_exceptions.md",
+        "title": "Strategic Renewal Exception Rules",
+        "section_title": "Escalation process",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.6150793555826485,
+        "final_score": 0.6998015811287216,
+        "chunk_text": "If approval fails on a strategic renewal, support should:\n1. confirm deal classification,\n2. capture contract value and discount,\n3. attach workflow error details,\n4. route the case to Revenue Operations or Pricing Operations depending on the exception type."
+      }
+    ],
+    "answer": {
+      "likely_issue": "Approval failure for a strategic renewal deal in Germany post-release 2409.",
+      "recommended_next_step": "Confirm the deal classification, capture contract value and discount, attach workflow error details, and route the case to Revenue Operations or Pricing Operations.",
+      "evidence": [
+        {
+          "chunk_id": "release_notes_2409_approval_workflow_change__sec00__chunk00",
+          "file_name": "release_notes_2409_approval_workflow_change.md",
+          "reason": "This document states that the approval workflow behavior was changed in release 2409, affecting quote categories and introducing tighter controls which could be impacting the customer's ability to complete approval."
+        },
+        {
+          "chunk_id": "policy_quote_approval_2025__sec02__chunk00",
+          "file_name": "policy_quote_approval_2025.md",
+          "reason": "This document clarifies that manual override is not permitted for strategic renewals, confirming the policy restricts this action."
+        },
+        {
+          "chunk_id": "policy_strategic_renewal_exceptions__sec03__chunk00",
+          "file_name": "policy_strategic_renewal_exceptions.md",
+          "reason": "This document outlines the steps to be taken for approval failures on strategic renewals."
+        }
+      ],
+      "conflict_warning": "There is a conflict between the manual override allowance mentioned in a support article and the release notes that indicate changes to the workflow. The newer policies clearly state that manual overrides should not be used for strategic renewals, which contradicts potential previous guidance about manual overrides.",
+      "insufficient_evidence": false
+    }
+  },
+  {
+    "case_id": "case_002",
+    "title": "Strategic renewal approval failure",
+    "escalation_text": "A strategic renewal deal is blocked during quote approval. Support wants to know whether manual override is still allowed and which guidance should be trusted.",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "policy_quote_approval_2025__sec04__chunk00",
+        "file_name": "policy_quote_approval_2025.md",
+        "title": "Quote Approval Policy 2025",
+        "section_title": "Strategic renewals",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.7333884784056329,
+        "final_score": 0.7767025109636614,
+        "chunk_text": "Strategic renewals require additional review when annual contract value exceeds €100,000, when discount exceeds 12%, or when a protected account flag is present.\nManual override is not allowed for strategic renewal deals in restricted workflow scenarios."
+      },
+      {
+        "chunk_id": "policy_quote_approval_2025__sec02__chunk00",
+        "file_name": "policy_quote_approval_2025.md",
+        "title": "Quote Approval Policy 2025",
+        "section_title": "Manual override policy",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.7074082331972997,
+        "final_score": 0.7598153515782449,
+        "chunk_text": "Manual override is permitted only for standard non-strategic deals with workflow failures caused by routing or timeout errors.\nManual override must not be used for strategic renewals, protected exception cases, or deals affected by release-restricted workflow behavior.\nSupport must always verify whether a release-specific restriction is active before using manual override."
+      },
+      {
+        "chunk_id": "policy_strategic_renewal_exceptions__sec02__chunk00",
+        "file_name": "policy_strategic_renewal_exceptions.md",
+        "title": "Strategic Renewal Exception Rules",
+        "section_title": "Override restrictions",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.6927328264062017,
+        "final_score": 0.7502763371640312,
+        "chunk_text": "Manual override is not permitted for strategic renewals when the workflow includes protected approval routing.\nSupport may collect evidence and route the case to Revenue Operations, but support must not bypass the workflow."
+      },
+      {
+        "chunk_id": "policy_quote_approval_2025__sec00__chunk00",
+        "file_name": "policy_quote_approval_2025.md",
+        "title": "Quote Approval Policy 2025",
+        "section_title": "Purpose",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.6719048965011324,
+        "final_score": 0.7367381827257361,
+        "chunk_text": "This document describes the current quote approval rules for standard deals, strategic renewals, and discount exceptions under the 2025 policy baseline."
+      },
+      {
+        "chunk_id": "policy_strategic_renewal_exceptions__sec03__chunk00",
+        "file_name": "policy_strategic_renewal_exceptions.md",
+        "title": "Strategic Renewal Exception Rules",
+        "section_title": "Escalation process",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.66236292202359,
+        "final_score": 0.7305358993153336,
+        "chunk_text": "If approval fails on a strategic renewal, support should:\n1. confirm deal classification,\n2. capture contract value and discount,\n3. attach workflow error details,\n4. route the case to Revenue Operations or Pricing Operations depending on the exception type."
+      }
+    ],
+    "answer": {
+      "likely_issue": "The strategic renewal deal is blocked during quote approval due to potential workflow restrictions.",
+      "recommended_next_step": "Confirm the deal classification, capture the contract value and discount, attach workflow error details, and route the case to Revenue Operations or Pricing Operations.",
+      "evidence": [
+        {
+          "chunk_id": "policy_quote_approval_2025__sec04__chunk00",
+          "file_name": "policy_quote_approval_2025.md",
+          "reason": "Manual override is not allowed for strategic renewal deals in restricted workflow scenarios."
+        },
+        {
+          "chunk_id": "policy_strategic_renewal_exceptions__sec02__chunk00",
+          "file_name": "policy_strategic_renewal_exceptions.md",
+          "reason": "Manual override is not permitted for strategic renewals when the workflow includes protected approval routing."
+        },
+        {
+          "chunk_id": "policy_strategic_renewal_exceptions__sec03__chunk00",
+          "file_name": "policy_strategic_renewal_exceptions.md",
+          "reason": "Support should collect evidence and route the case to Revenue Operations if approval fails on a strategic renewal."
+        }
+      ],
+      "conflict_warning": "There are no conflicting sources regarding the manual override policy for strategic renewals; all sources consistently indicate that manual overrides are not permitted in these cases.",
+      "insufficient_evidence": false
+    }
+  },
+  {
+    "case_id": "case_003",
+    "title": "Outdated KB versus policy",
+    "escalation_text": "A support engineer is following an older KB article for Germany, but a newer policy document appears stricter. Which source should be followed and what should the next step be?",
+    "retrieved_chunks": [
+      {
+        "chunk_id": "policy_support_escalation_guidelines__sec02__chunk00",
+        "file_name": "policy_support_escalation_guidelines.md",
+        "title": "Support Escalation Guidelines",
+        "section_title": "Resolution workflow",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.6506261612208569,
+        "final_score": 0.7229070047935571,
+        "chunk_text": "Support should search for the latest policy and release guidance before acting on older knowledge-base articles.\nIf the issue may be linked to a known incident, support should consult incident summaries and troubleshooting guidance."
+      },
+      {
+        "chunk_id": "policy_support_escalation_guidelines__sec03__chunk00",
+        "file_name": "policy_support_escalation_guidelines.md",
+        "title": "Support Escalation Guidelines",
+        "section_title": "Handling conflicting guidance",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.6319198110728624,
+        "final_score": 0.7107478771973607,
+        "chunk_text": "If a support KB article conflicts with a current policy or release note, the support KB article should be treated as secondary.\nSupport should mention the conflict in the case notes and proceed with the current high-authority source."
+      },
+      {
+        "chunk_id": "policy_regional_approval_rules__sec02__chunk00",
+        "file_name": "policy_regional_approval_rules.md",
+        "title": "Regional Approval Rules",
+        "section_title": "Operational routing",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.631222096895753,
+        "final_score": 0.7102943629822395,
+        "chunk_text": "Cases involving approval failures in Germany should be routed to the Germany support queue first if a region-specific incident is active.\nSupport may not rely on legacy manual override guidance unless the current policy explicitly allows it."
+      },
+      {
+        "chunk_id": "policy_quote_approval_2025__sec03__chunk00",
+        "file_name": "policy_quote_approval_2025.md",
+        "title": "Quote Approval Policy 2025",
+        "section_title": "Regional rules",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.6206479412744157,
+        "final_score": 0.7034211618283702,
+        "chunk_text": "Germany and EU support flows must follow the most recent release behavior and current policy restrictions.\nWhere a release note explicitly narrows manual override behavior, the release note and current policy should be treated as authoritative."
+      },
+      {
+        "chunk_id": "policy_regional_approval_rules__sec03__chunk00",
+        "file_name": "policy_regional_approval_rules.md",
+        "title": "Regional Approval Rules",
+        "section_title": "Document precedence",
+        "document_type": "policy",
+        "version": "2025",
+        "source_authority": "high",
+        "semantic_score": 0.5579512446577487,
+        "final_score": 0.6626683090275367,
+        "chunk_text": "When sources conflict, use the following order of precedence:\n1. current policy,\n2. current release note,\n3. troubleshooting guide,\n4. support KB,\n5. meeting notes."
+      }
+    ],
+    "answer": {
+      "likely_issue": "The support engineer is following an older KB article that conflicts with a newer policy document that is stricter for Germany.",
+      "recommended_next_step": "Consult and follow the latest policy document as it is deemed authoritative. Mention the conflict in the case notes.",
+      "evidence": [
+        {
+          "chunk_id": "policy_support_escalation_guidelines__sec02__chunk00",
+          "file_name": "policy_support_escalation_guidelines.md",
+          "reason": "This confirms that the latest policy should be prioritized over older knowledge-base articles."
+        },
+        {
+          "chunk_id": "policy_support_escalation_guidelines__sec03__chunk00",
+          "file_name": "policy_support_escalation_guidelines.md",
+          "reason": "This indicates that current high-authority sources should be followed in case of conflicts between guidance."
+        },
+        {
+          "chunk_id": "policy_quote_approval_2025__sec03__chunk00",
+          "file_name": "policy_quote_approval_2025.md",
+          "reason": "This reinforces that the current policies and release notes must be adhered to for Germany."
+        }
+      ],
+      "conflict_warning": "The evidence indicates that older KB articles should not be followed if they conflict with newer, authoritative sources.",
+      "insufficient_evidence": false
+    }
+  }
+]
