@@ -40,4 +40,27 @@ The system compares release notes, policy documents, and support KB articles to 
 - OpenAI API
 - Streamlit
 - JSON / Markdown document corpus
-  
+
+## Evaluation
+
+The system was evaluated on 12 curated escalation scenarios covering:
+- direct retrieval,
+- multi-document reasoning,
+- conflict / stale-guidance situations,
+- insufficient-evidence cases.
+
+Current results:
+- retrieval hit@3: 1.00
+- retrieval hit@5: 1.00
+- average document coverage: 0.608
+- insufficient-evidence match rate: 0.917
+- conflict detection match rate: 0.500
+
+These results suggest that retrieval is strong and the system handles insufficient evidence well. The main remaining limitation is more precise distinction between true source conflicts, stale guidance, and incomplete evidence.
+
+## Future improvements
+
+- separate true conflict detection from stale-guidance warnings
+- improve retrieval coverage for update- and troubleshooting-related queries
+- map cited metadata from retrieved chunks in code instead of relying on model-generated file names
+- add a larger manual answer-quality review set
