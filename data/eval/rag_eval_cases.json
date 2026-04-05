@@ -1,0 +1,147 @@
+[
+  {
+    "case_id": "eval_001",
+    "category": "conflict_detection",
+    "question": "Customer in Germany cannot complete quote approval after 2409. A support article says manual override is allowed, but release notes suggest approval workflow changed. The deal is a strategic renewal. What should support do next?",
+    "expected_docs": [
+      "kb_manual_override_legacy_guidance.md",
+      "release_notes_2409_approval_workflow_change.md",
+      "policy_quote_approval_2025.md",
+      "policy_strategic_renewal_exceptions.md"
+    ],
+    "expected_should_flag_conflict": true,
+    "expected_insufficient_evidence": false,
+    "expected_answer_summary": "The system should explain that older KB guidance may be outdated, newer release and policy guidance should be preferred, and support should follow current approval restrictions for strategic renewals."
+  },
+  {
+    "case_id": "eval_002",
+    "category": "multi_document_reasoning",
+    "question": "A strategic renewal deal is blocked during quote approval after 2409. Is manual override still allowed and what should support do next?",
+    "expected_docs": [
+      "release_notes_2409_approval_workflow_change.md",
+      "policy_quote_approval_2025.md",
+      "policy_strategic_renewal_exceptions.md"
+    ],
+    "expected_should_flag_conflict": false,
+    "expected_insufficient_evidence": false,
+    "expected_answer_summary": "The answer should combine current policy and release guidance, explain whether override is restricted, and recommend the correct support escalation path."
+  },
+  {
+    "case_id": "eval_003",
+    "category": "conflict_detection",
+    "question": "A support engineer is following an older KB article for Germany, but a newer policy document appears stricter. Which source should be followed and what should the next step be?",
+    "expected_docs": [
+      "kb_manual_override_legacy_guidance.md",
+      "policy_quote_approval_2025.md",
+      "release_notes_2409_approval_workflow_change.md"
+    ],
+    "expected_should_flag_conflict": true,
+    "expected_insufficient_evidence": false,
+    "expected_answer_summary": "The system should prefer the newer and higher-authority policy or release guidance over legacy KB instructions."
+  },
+  {
+    "case_id": "eval_004",
+    "category": "direct_retrieval",
+    "question": "What changed in quote approval workflow in 2409?",
+    "expected_docs": [
+      "release_notes_2409_approval_workflow_change.md"
+    ],
+    "expected_should_flag_conflict": false,
+    "expected_insufficient_evidence": false,
+    "expected_answer_summary": "The answer should summarize the workflow changes introduced in release 2409."
+  },
+  {
+    "case_id": "eval_005",
+    "category": "direct_retrieval",
+    "question": "Which document should support trust for current quote approval rules?",
+    "expected_docs": [
+      "policy_quote_approval_2025.md",
+      "policy_quote_approval_2024.md"
+    ],
+    "expected_should_flag_conflict": false,
+    "expected_insufficient_evidence": false,
+    "expected_answer_summary": "The answer should identify the current policy as the primary source for current approval rules."
+  },
+  {
+    "case_id": "eval_006",
+    "category": "direct_retrieval",
+    "question": "When should support contact operations during a quote approval escalation?",
+    "expected_docs": [
+      "kb_when_to_contact_ops.md",
+      "policy_support_escalation_guidelines.md"
+    ],
+    "expected_should_flag_conflict": false,
+    "expected_insufficient_evidence": false,
+    "expected_answer_summary": "The answer should mention when support should hand the case to operations or escalation teams."
+  },
+  {
+    "case_id": "eval_007",
+    "category": "multi_document_reasoning",
+    "question": "Quote approval fails after an update. Which sources should support check first and what practical next step should they take?",
+    "expected_docs": [
+      "kb_quote_approval_fails_after_update.md",
+      "troubleshooting_quote_submission_blocked.md",
+      "release_notes_2409_approval_workflow_change.md"
+    ],
+    "expected_should_flag_conflict": false,
+    "expected_insufficient_evidence": false,
+    "expected_answer_summary": "The answer should combine troubleshooting and release-related evidence and recommend a concrete support workflow."
+  },
+  {
+    "case_id": "eval_008",
+    "category": "direct_retrieval",
+    "question": "Why might the manual override button be missing for support in Germany?",
+    "expected_docs": [
+      "troubleshooting_missing_override_button.md",
+      "release_notes_2409_approval_workflow_change.md",
+      "policy_quote_approval_2025.md"
+    ],
+    "expected_should_flag_conflict": false,
+    "expected_insufficient_evidence": false,
+    "expected_answer_summary": "The answer should point to troubleshooting guidance and any workflow restrictions that explain the missing override button."
+  },
+  {
+    "case_id": "eval_009",
+    "category": "multi_document_reasoning",
+    "question": "A support agent sees a discount rule mismatch during quote approval. Which sources are relevant and what should happen next?",
+    "expected_docs": [
+      "troubleshooting_discount_rule_mismatch.md",
+      "policy_discount_thresholds.md",
+      "release_notes_2403_discount_logic.md"
+    ],
+    "expected_should_flag_conflict": false,
+    "expected_insufficient_evidence": false,
+    "expected_answer_summary": "The answer should combine discount logic and troubleshooting guidance and recommend the next operational step."
+  },
+  {
+    "case_id": "eval_010",
+    "category": "conflict_detection",
+    "question": "Meeting notes suggest support teams were confused after 2409, but official policy seems stricter. How should the case be interpreted?",
+    "expected_docs": [
+      "meeting_notes_release_2409_followup.md",
+      "policy_quote_approval_2025.md",
+      "incident_summary_override_confusion.md"
+    ],
+    "expected_should_flag_conflict": true,
+    "expected_insufficient_evidence": false,
+    "expected_answer_summary": "The answer should mention the confusion in informal notes but prioritize official policy for the actual recommendation."
+  },
+  {
+    "case_id": "eval_011",
+    "category": "insufficient_evidence",
+    "question": "What should support do for an APAC quote approval case after 2409 if manual override is missing?",
+    "expected_docs": [],
+    "expected_should_flag_conflict": false,
+    "expected_insufficient_evidence": true,
+    "expected_answer_summary": "The answer should say that evidence is insufficient because APAC-specific guidance is not available in the corpus."
+  },
+  {
+    "case_id": "eval_012",
+    "category": "insufficient_evidence",
+    "question": "What is the exact approval threshold for nonprofit education deals in Canada after 2409?",
+    "expected_docs": [],
+    "expected_should_flag_conflict": false,
+    "expected_insufficient_evidence": true,
+    "expected_answer_summary": "The answer should avoid inventing an exact threshold if the corpus does not define it."
+  }
+]

@@ -1,0 +1,644 @@
+{
+  "summary": {
+    "cases_total": 12,
+    "cases_with_expected_docs": 10,
+    "retrieval_hit_at_3": 1.0,
+    "retrieval_hit_at_5": 1.0,
+    "average_doc_coverage": 0.608,
+    "answer_conflict_match_rate": 0.5,
+    "answer_insufficient_match_rate": 0.917,
+    "with_answers": true
+  },
+  "results": [
+    {
+      "case_id": "eval_001",
+      "category": "conflict_detection",
+      "question": "Customer in Germany cannot complete quote approval after 2409. A support article says manual override is allowed, but release notes suggest approval workflow changed. The deal is a strategic renewal. What should support do next?",
+      "expected_docs": [
+        "kb_manual_override_legacy_guidance.md",
+        "release_notes_2409_approval_workflow_change.md",
+        "policy_quote_approval_2025.md",
+        "policy_strategic_renewal_exceptions.md"
+      ],
+      "expected_should_flag_conflict": true,
+      "expected_insufficient_evidence": false,
+      "expected_answer_summary": "The system should explain that older KB guidance may be outdated, newer release and policy guidance should be preferred, and support should follow current approval restrictions for strategic renewals.",
+      "retrieval": {
+        "top_docs": [
+          "release_notes_2409_approval_workflow_change.md",
+          "policy_quote_approval_2025.md",
+          "policy_regional_approval_rules.md",
+          "policy_strategic_renewal_exceptions.md"
+        ],
+        "hit_at_3": true,
+        "hit_at_5": true,
+        "doc_coverage": 0.75
+      },
+      "answer_eval": {
+        "generated_answer": {
+          "likely_issue": "Approval failure on a strategic renewal deal in Germany after release 2409 updates.",
+          "recommended_next_step": "Confirm deal classification, capture contract value and discount, attach workflow error details, and route the case to Revenue Operations or Pricing Operations for further handling.",
+          "evidence": [
+            {
+              "chunk_id": "release_notes_2409_approval_workflow_change__sec00__chunk00",
+              "file_name": "release_notes_2409_approval_workflow_change.md",
+              "reason": "Release 2409 changed workflow behavior and tightened controls around manual override."
+            },
+            {
+              "chunk_id": "policy_quote_approval_2025__sec02__chunk00",
+              "file_name": "policy_quote_approval_2025.md",
+              "reason": "Manual override cannot be used for strategic renewals or deals impacted by workflow behavior changes."
+            },
+            {
+              "chunk_id": "policy_strategic_renewal_exceptions__sec03__chunk00",
+              "file_name": "policy_strategic_renewal_exceptions.md",
+              "reason": "Specific steps are outlined for handling approval failures on strategic renewals."
+            }
+          ],
+          "conflict_warning": "The guidance regarding manual override conflicts with the new workflow restrictions introduced in release 2409, indicating tighter controls and limiting overrides for strategic renewals.",
+          "insufficient_evidence": false
+        },
+        "auto_conflict_match": true,
+        "auto_insufficient_match": true,
+        "manual_groundedness_score": null,
+        "manual_citation_quality_score": null,
+        "manual_expected_summary_match_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "eval_002",
+      "category": "multi_document_reasoning",
+      "question": "A strategic renewal deal is blocked during quote approval after 2409. Is manual override still allowed and what should support do next?",
+      "expected_docs": [
+        "release_notes_2409_approval_workflow_change.md",
+        "policy_quote_approval_2025.md",
+        "policy_strategic_renewal_exceptions.md"
+      ],
+      "expected_should_flag_conflict": false,
+      "expected_insufficient_evidence": false,
+      "expected_answer_summary": "The answer should combine current policy and release guidance, explain whether override is restricted, and recommend the correct support escalation path.",
+      "retrieval": {
+        "top_docs": [
+          "policy_quote_approval_2025.md",
+          "policy_strategic_renewal_exceptions.md"
+        ],
+        "hit_at_3": true,
+        "hit_at_5": true,
+        "doc_coverage": 0.667
+      },
+      "answer_eval": {
+        "generated_answer": {
+          "likely_issue": "The strategic renewal deal is blocked during quote approval due to workflow restrictions after the 2409 stage.",
+          "recommended_next_step": "Support should confirm the deal classification, capture the contract value and discount, attach any workflow error details, and route the case to Revenue Operations or Pricing Operations.",
+          "evidence": [
+            {
+              "chunk_id": "policy_strategic_renewal_exceptions__sec03__chunk00",
+              "file_name": "policy_strategic_renewal_exceptions.md",
+              "reason": "Details the actions to be taken when a strategic renewal approval fails."
+            },
+            {
+              "chunk_id": "policy_strategic_renewal_exceptions__sec02__chunk00",
+              "file_name": "policy_strategic_renewal_exceptions.md",
+              "reason": "States that manual override is not permitted for strategic renewals."
+            },
+            {
+              "chunk_id": "policy_quote_approval_2025__sec02__chunk00",
+              "file_name": "policy_quote_approval_2025.md",
+              "reason": "Clarifies that manual override is only allowed for standard non-strategic deals."
+            }
+          ],
+          "conflict_warning": "",
+          "insufficient_evidence": false
+        },
+        "auto_conflict_match": true,
+        "auto_insufficient_match": true,
+        "manual_groundedness_score": null,
+        "manual_citation_quality_score": null,
+        "manual_expected_summary_match_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "eval_003",
+      "category": "conflict_detection",
+      "question": "A support engineer is following an older KB article for Germany, but a newer policy document appears stricter. Which source should be followed and what should the next step be?",
+      "expected_docs": [
+        "kb_manual_override_legacy_guidance.md",
+        "policy_quote_approval_2025.md",
+        "release_notes_2409_approval_workflow_change.md"
+      ],
+      "expected_should_flag_conflict": true,
+      "expected_insufficient_evidence": false,
+      "expected_answer_summary": "The system should prefer the newer and higher-authority policy or release guidance over legacy KB instructions.",
+      "retrieval": {
+        "top_docs": [
+          "policy_support_escalation_guidelines.md",
+          "policy_regional_approval_rules.md",
+          "policy_quote_approval_2025.md"
+        ],
+        "hit_at_3": true,
+        "hit_at_5": true,
+        "doc_coverage": 0.333
+      },
+      "answer_eval": {
+        "generated_answer": {
+          "likely_issue": "The support engineer is adhering to an outdated knowledge base article rather than the latest policy document.",
+          "recommended_next_step": "Follow the latest policy document as it is stricter and considered authoritative. Document the conflict in the case notes and proceed accordingly.",
+          "evidence": [
+            {
+              "chunk_id": "policy_support_escalation_guidelines__sec02__chunk00",
+              "file_name": "policy_support_escalation_guidelines.md",
+              "reason": "Support should search for the latest policy and release guidance before acting on older knowledge-base articles."
+            },
+            {
+              "chunk_id": "policy_support_escalation_guidelines__sec03__chunk00",
+              "file_name": "policy_support_escalation_guidelines.md",
+              "reason": "If a support KB article conflicts with a current policy or release note, the support KB article should be treated as secondary."
+            },
+            {
+              "chunk_id": "policy_regional_approval_rules__sec03__chunk00",
+              "file_name": "policy_regional_approval_rules.md",
+              "reason": "When sources conflict, use the current policy as the primary source."
+            }
+          ],
+          "conflict_warning": "The knowledge base article is outdated compared to the current policy and should not be followed if there is a conflict.",
+          "insufficient_evidence": false
+        },
+        "auto_conflict_match": true,
+        "auto_insufficient_match": true,
+        "manual_groundedness_score": null,
+        "manual_citation_quality_score": null,
+        "manual_expected_summary_match_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "eval_004",
+      "category": "direct_retrieval",
+      "question": "What changed in quote approval workflow in 2409?",
+      "expected_docs": [
+        "release_notes_2409_approval_workflow_change.md"
+      ],
+      "expected_should_flag_conflict": false,
+      "expected_insufficient_evidence": false,
+      "expected_answer_summary": "The answer should summarize the workflow changes introduced in release 2409.",
+      "retrieval": {
+        "top_docs": [
+          "release_notes_2409_approval_workflow_change.md",
+          "policy_regional_approval_rules.md",
+          "release_notes_2402_quote_rules.md",
+          "policy_discount_thresholds.md",
+          "release_notes_2408_quote_approval_updates.md"
+        ],
+        "hit_at_3": true,
+        "hit_at_5": true,
+        "doc_coverage": 1.0
+      },
+      "answer_eval": {
+        "generated_answer": {
+          "likely_issue": "The approval workflow behavior has changed for selected quote categories, with tighter controls on manual overrides introduced in version 2409.",
+          "recommended_next_step": "Review the release notes for version 2409 to understand the specific changes to the approval workflow and how they may affect the current processes.",
+          "evidence": [
+            {
+              "chunk_id": "release_notes_2409_approval_workflow_change__sec00__chunk00",
+              "file_name": "release_notes_2409_approval_workflow_change.md",
+              "reason": "This evidence directly addresses the changes made to the approval workflow in version 2409."
+            }
+          ],
+          "conflict_warning": "",
+          "insufficient_evidence": false
+        },
+        "auto_conflict_match": true,
+        "auto_insufficient_match": true,
+        "manual_groundedness_score": null,
+        "manual_citation_quality_score": null,
+        "manual_expected_summary_match_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "eval_005",
+      "category": "direct_retrieval",
+      "question": "Which document should support trust for current quote approval rules?",
+      "expected_docs": [
+        "policy_quote_approval_2025.md",
+        "policy_quote_approval_2024.md"
+      ],
+      "expected_should_flag_conflict": false,
+      "expected_insufficient_evidence": false,
+      "expected_answer_summary": "The answer should identify the current policy as the primary source for current approval rules.",
+      "retrieval": {
+        "top_docs": [
+          "policy_quote_approval_2025.md",
+          "policy_quote_approval_2024.md",
+          "policy_support_escalation_guidelines.md",
+          "policy_regional_approval_rules.md",
+          "policy_discount_thresholds.md"
+        ],
+        "hit_at_3": true,
+        "hit_at_5": true,
+        "doc_coverage": 1.0
+      },
+      "answer_eval": {
+        "generated_answer": {
+          "likely_issue": "The customer is seeking clarity on the current quote approval rules for approval processes and how to establish trust in those rules.",
+          "recommended_next_step": "Refer to the 'Quote Approval Policy 2025' document for the most current rules regarding quote approvals, as it outlines the procedures for all deal types under the 2025 policy.",
+          "evidence": [
+            {
+              "chunk_id": "policy_quote_approval_2025__sec00__chunk00",
+              "file_name": "policy_quote_approval_2025.md",
+              "reason": "This document describes the current quote approval rules for standard deals, strategic renewals, and discount exceptions under the 2025 policy baseline."
+            }
+          ],
+          "conflict_warning": "There are older documents from 2024 that provide prior rules which may not be relevant anymore. It's important to rely on the 2025 document for accurate current procedures.",
+          "insufficient_evidence": false
+        },
+        "auto_conflict_match": false,
+        "auto_insufficient_match": true,
+        "manual_groundedness_score": null,
+        "manual_citation_quality_score": null,
+        "manual_expected_summary_match_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "eval_006",
+      "category": "direct_retrieval",
+      "question": "When should support contact operations during a quote approval escalation?",
+      "expected_docs": [
+        "kb_when_to_contact_ops.md",
+        "policy_support_escalation_guidelines.md"
+      ],
+      "expected_should_flag_conflict": false,
+      "expected_insufficient_evidence": false,
+      "expected_answer_summary": "The answer should mention when support should hand the case to operations or escalation teams.",
+      "retrieval": {
+        "top_docs": [
+          "policy_support_escalation_guidelines.md",
+          "policy_discount_thresholds.md",
+          "policy_regional_approval_rules.md",
+          "kb_when_to_contact_ops.md",
+          "policy_quote_approval_2025.md"
+        ],
+        "hit_at_3": true,
+        "hit_at_5": true,
+        "doc_coverage": 1.0
+      },
+      "answer_eval": {
+        "generated_answer": {
+          "likely_issue": "Unresolved quote approval issue or local remediation not possible due to policy constraints.",
+          "recommended_next_step": "Contact Operations if the quote approval issue cannot be resolved through standard troubleshooting or if local policy restrictions impede resolution.",
+          "evidence": [
+            {
+              "chunk_id": "kb_when_to_contact_ops__sec00__chunk00",
+              "file_name": "kb_when_to_contact_ops.md",
+              "reason": "This document specifies conditions under which support should escalate to Operations."
+            },
+            {
+              "chunk_id": "policy_support_escalation_guidelines__sec00__chunk00",
+              "file_name": "policy_support_escalation_guidelines.md",
+              "reason": "Defines how support should handle quote approval escalations."
+            }
+          ],
+          "conflict_warning": "",
+          "insufficient_evidence": false
+        },
+        "auto_conflict_match": true,
+        "auto_insufficient_match": true,
+        "manual_groundedness_score": null,
+        "manual_citation_quality_score": null,
+        "manual_expected_summary_match_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "eval_007",
+      "category": "multi_document_reasoning",
+      "question": "Quote approval fails after an update. Which sources should support check first and what practical next step should they take?",
+      "expected_docs": [
+        "kb_quote_approval_fails_after_update.md",
+        "troubleshooting_quote_submission_blocked.md",
+        "release_notes_2409_approval_workflow_change.md"
+      ],
+      "expected_should_flag_conflict": false,
+      "expected_insufficient_evidence": false,
+      "expected_answer_summary": "The answer should combine troubleshooting and release-related evidence and recommend a concrete support workflow.",
+      "retrieval": {
+        "top_docs": [
+          "policy_quote_approval_2025.md",
+          "kb_quote_approval_fails_after_update.md",
+          "policy_support_escalation_guidelines.md",
+          "policy_discount_thresholds.md",
+          "policy_regional_approval_rules.md"
+        ],
+        "hit_at_3": true,
+        "hit_at_5": true,
+        "doc_coverage": 0.333
+      },
+      "answer_eval": {
+        "generated_answer": {
+          "likely_issue": "Quote approval failures may be related to factors such as deal type, contract value, discount level, region, and recent release updates.",
+          "recommended_next_step": "Support should investigate by checking the latest quote approval policy, if any incidents are known, and review the relevant release notes. Refer to the Quote Approval Policy 2025 for guidelines, and consider the Discount Threshold Policy in combination.",
+          "evidence": [
+            {
+              "chunk_id": "policy_quote_approval_2025__sec05__chunk00",
+              "file_name": "policy_quote_approval_2025.md},{",
+              "reason": "This policy outlines the necessary identification steps to take when dealing with approval failures."
+            },
+            {
+              "chunk_id": "kb_quote_approval_fails_after_update__sec00__chunk00",
+              "file_name": "kb_quote_approval_fails_after_update.md",
+              "reason": "This knowledge base article provides specific guidance for investigating quote approval failures shortly after updates."
+            },
+            {
+              "chunk_id": "policy_support_escalation_guidelines__sec02__chunk00",
+              "file_name": "policy_support_escalation_guidelines.md",
+              "reason": "This policy advises consulting the latest policies and release guidance prior to acting on older articles."
+            },
+            {
+              "chunk_id": "policy_discount_thresholds__sec03__chunk00",
+              "file_name": "policy_discount_thresholds.md",
+              "reason": "This policy should be referenced in conjunction with the quote approval policy for troubles related to discounts."
+            }
+          ],
+          "conflict_warning": "None identified as the evidence suggests a clear prioritization of current policies and release notes.",
+          "insufficient_evidence": false
+        },
+        "auto_conflict_match": false,
+        "auto_insufficient_match": true,
+        "manual_groundedness_score": null,
+        "manual_citation_quality_score": null,
+        "manual_expected_summary_match_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "eval_008",
+      "category": "direct_retrieval",
+      "question": "Why might the manual override button be missing for support in Germany?",
+      "expected_docs": [
+        "troubleshooting_missing_override_button.md",
+        "release_notes_2409_approval_workflow_change.md",
+        "policy_quote_approval_2025.md"
+      ],
+      "expected_should_flag_conflict": false,
+      "expected_insufficient_evidence": false,
+      "expected_answer_summary": "The answer should point to troubleshooting guidance and any workflow restrictions that explain the missing override button.",
+      "retrieval": {
+        "top_docs": [
+          "policy_regional_approval_rules.md",
+          "policy_strategic_renewal_exceptions.md",
+          "release_notes_2409_approval_workflow_change.md",
+          "policy_discount_thresholds.md",
+          "release_notes_2404_manual_override.md"
+        ],
+        "hit_at_3": true,
+        "hit_at_5": true,
+        "doc_coverage": 0.333
+      },
+      "answer_eval": {
+        "generated_answer": {
+          "likely_issue": "The manual override button is missing due to policy changes that restrict its availability for cases in Germany and affected EU accounts, particularly under the new routing logic for strategic renewals.",
+          "recommended_next_step": "Check if the case involves a strategic renewal or falls under protected regional routing paths, which would prohibit the use of the manual override.",
+          "evidence": [
+            {
+              "chunk_id": "release_notes_2409_approval_workflow_change__sec01__chunk00",
+              "file_name": "release_notes_2409_approval_workflow_change.md",
+              "reason": "Manual override availability was restricted for strategic renewals and cases entering protected regional routing paths, affecting the display or permission to use the override."
+            },
+            {
+              "chunk_id": "policy_regional_approval_rules__sec02__chunk00",
+              "file_name": "policy_regional_approval_rules.md",
+              "reason": "Cases involving approval failures in Germany must be routed to the German support queue, and legacy manual override guidance is no longer applicable unless explicitly stated."
+            },
+            {
+              "chunk_id": "release_notes_2404_manual_override__sec02__chunk00",
+              "file_name": "release_notes_2404_manual_override.md",
+              "reason": "A missing manual override button is not a UI defect; it could indicate that the case is ineligible for override based on the current policies."
+            }
+          ],
+          "conflict_warning": "No apparent conflicts observed; evidence aligns with current policy updates regarding manual override restrictions.",
+          "insufficient_evidence": false
+        },
+        "auto_conflict_match": false,
+        "auto_insufficient_match": true,
+        "manual_groundedness_score": null,
+        "manual_citation_quality_score": null,
+        "manual_expected_summary_match_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "eval_009",
+      "category": "multi_document_reasoning",
+      "question": "A support agent sees a discount rule mismatch during quote approval. Which sources are relevant and what should happen next?",
+      "expected_docs": [
+        "troubleshooting_discount_rule_mismatch.md",
+        "policy_discount_thresholds.md",
+        "release_notes_2403_discount_logic.md"
+      ],
+      "expected_should_flag_conflict": false,
+      "expected_insufficient_evidence": false,
+      "expected_answer_summary": "The answer should combine discount logic and troubleshooting guidance and recommend the next operational step.",
+      "retrieval": {
+        "top_docs": [
+          "policy_quote_approval_2025.md",
+          "policy_quote_approval_2024.md",
+          "policy_discount_thresholds.md"
+        ],
+        "hit_at_3": true,
+        "hit_at_5": true,
+        "doc_coverage": 0.333
+      },
+      "answer_eval": {
+        "generated_answer": {
+          "likely_issue": "There is a discount rule mismatch during quote approval, likely due to discrepancies in approval thresholds between different policy versions.",
+          "recommended_next_step": "Support should verify the deal type, contract value, discount level, and the active workflow version, referring to the most recent policy (2025) for guidance before escalating further.",
+          "evidence": [
+            {
+              "chunk_id": "policy_quote_approval_2025__sec05__chunk00",
+              "file_name": "policy_quote_approval_2025.md",
+              "reason": "This guidance states that support should identify relevant details on deal type and discount level when there are approval failures."
+            },
+            {
+              "chunk_id": "policy_quote_approval_2024__sec01__chunk00",
+              "file_name": "policy_quote_approval_2024.md",
+              "reason": "This section outlines the approval thresholds for discount levels which may have changed in the latest document."
+            },
+            {
+              "chunk_id": "policy_quote_approval_2024__sec05__chunk00",
+              "file_name": "policy_quote_approval_2024.md",
+              "reason": "It emphasizes the need to verify details when customers report approval failures."
+            },
+            {
+              "chunk_id": "policy_discount_thresholds__sec03__chunk00",
+              "file_name": "policy_discount_thresholds.md",
+              "reason": "This policy suggests combining the discount thresholds with the current quote approval policy for troubleshooting."
+            },
+            {
+              "chunk_id": "policy_quote_approval_2025__sec00__chunk00",
+              "file_name": "policy_quote_approval_2025.md",
+              "reason": "Clarifies that the document outlines the current approval rules."
+            }
+          ],
+          "conflict_warning": "The discount approval thresholds may have changed from the 2024 policy to the 2025 policy, necessitating a preference for the latest version to avoid inconsistencies.",
+          "insufficient_evidence": false
+        },
+        "auto_conflict_match": false,
+        "auto_insufficient_match": true,
+        "manual_groundedness_score": null,
+        "manual_citation_quality_score": null,
+        "manual_expected_summary_match_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "eval_010",
+      "category": "conflict_detection",
+      "question": "Meeting notes suggest support teams were confused after 2409, but official policy seems stricter. How should the case be interpreted?",
+      "expected_docs": [
+        "meeting_notes_release_2409_followup.md",
+        "policy_quote_approval_2025.md",
+        "incident_summary_override_confusion.md"
+      ],
+      "expected_should_flag_conflict": true,
+      "expected_insufficient_evidence": false,
+      "expected_answer_summary": "The answer should mention the confusion in informal notes but prioritize official policy for the actual recommendation.",
+      "retrieval": {
+        "top_docs": [
+          "policy_support_escalation_guidelines.md",
+          "policy_discount_thresholds.md",
+          "policy_quote_approval_2025.md",
+          "policy_regional_approval_rules.md"
+        ],
+        "hit_at_3": true,
+        "hit_at_5": true,
+        "doc_coverage": 0.333
+      },
+      "answer_eval": {
+        "generated_answer": {
+          "likely_issue": "There seems to be confusion among support teams regarding the interpretation of the escalation case after the 2409 incident due to conflicting guidance from meeting notes and official policies.",
+          "recommended_next_step": "Refer to the current high-authority policy on support escalation and treat any conflicting KB articles and meeting notes as secondary.",
+          "evidence": [
+            {
+              "chunk_id": "policy_support_escalation_guidelines__sec03__chunk00",
+              "file_name": "policy_support_escalation_guidelines.md",
+              "reason": "This guideline specifies that if there is a conflict between a support KB article and a current policy or release note, the policy should be followed."
+            },
+            {
+              "chunk_id": "policy_support_escalation_guidelines__sec02__chunk00",
+              "file_name": "policy_support_escalation_guidelines.md",
+              "reason": "This guideline emphasizes the importance of referencing the latest policy and release guidance rather than older KB articles."
+            },
+            {
+              "chunk_id": "policy_regional_approval_rules__sec03__chunk00",
+              "file_name": "policy_regional_approval_rules.md",
+              "reason": "This document establishes the order of precedence in case of conflicting sources, emphasizing current policies and release notes."
+            }
+          ],
+          "conflict_warning": "There appears to be a discrepancy between the confusion expressed in the meeting notes and the strict directives in currently established policies. Policies from 2025 clearly take precedence over less formal sources like meeting notes.",
+          "insufficient_evidence": false
+        },
+        "auto_conflict_match": true,
+        "auto_insufficient_match": true,
+        "manual_groundedness_score": null,
+        "manual_citation_quality_score": null,
+        "manual_expected_summary_match_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "eval_011",
+      "category": "insufficient_evidence",
+      "question": "What should support do for an APAC quote approval case after 2409 if manual override is missing?",
+      "expected_docs": [],
+      "expected_should_flag_conflict": false,
+      "expected_insufficient_evidence": true,
+      "expected_answer_summary": "The answer should say that evidence is insufficient because APAC-specific guidance is not available in the corpus.",
+      "retrieval": {
+        "top_docs": [
+          "policy_quote_approval_2024.md",
+          "policy_regional_approval_rules.md",
+          "policy_discount_thresholds.md",
+          "policy_support_escalation_guidelines.md",
+          "release_notes_2409_approval_workflow_change.md"
+        ],
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "doc_coverage": null
+      },
+      "answer_eval": {
+        "generated_answer": {
+          "likely_issue": "The customer is facing an approval failure case and is missing the manual override, which is restricted under current policy.",
+          "recommended_next_step": "Support should confirm the nature of the deal and its compliance with the criteria laid out in the Manual Override Policy before attempting any override, if applicable. If the criteria are not met, escalate the case according to the Support Escalation Guidelines.",
+          "evidence": [
+            {
+              "chunk_id": "policy_quote_approval_2024__sec02__chunk00",
+              "file_name": "policy_quote_approval_2024.md",
+              "reason": "The manual override policy clarifies when overrides can be utilized and specifies that they must not be used to bypass missing approvals."
+            },
+            {
+              "chunk_id": "release_notes_2409_approval_workflow_change__sec00__chunk00",
+              "file_name": "release_notes_2409_approval_workflow_change.md",
+              "reason": "Release 2409 introduced tighter controls around manual override which affects how overrides can be handled."
+            }
+          ],
+          "conflict_warning": "None, as the evidence is consistent regarding the tight controls on manual overrides introduced in Release 2409 and the requirements for applying them.",
+          "insufficient_evidence": false
+        },
+        "auto_conflict_match": false,
+        "auto_insufficient_match": false,
+        "manual_groundedness_score": null,
+        "manual_citation_quality_score": null,
+        "manual_expected_summary_match_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "eval_012",
+      "category": "insufficient_evidence",
+      "question": "What is the exact approval threshold for nonprofit education deals in Canada after 2409?",
+      "expected_docs": [],
+      "expected_should_flag_conflict": false,
+      "expected_insufficient_evidence": true,
+      "expected_answer_summary": "The answer should avoid inventing an exact threshold if the corpus does not define it.",
+      "retrieval": {
+        "top_docs": [
+          "policy_discount_thresholds.md",
+          "policy_quote_approval_2025.md",
+          "policy_quote_approval_2024.md"
+        ],
+        "hit_at_3": null,
+        "hit_at_5": null,
+        "doc_coverage": null
+      },
+      "answer_eval": {
+        "generated_answer": {
+          "likely_issue": "The exact approval threshold for nonprofit education deals in Canada after 2409 is not explicitly outlined in the available evidence.",
+          "recommended_next_step": "Consult with a pricing or policy expert to clarify if there are specific guidelines for nonprofit education deals in Canada that are not covered in the retrieved documents.",
+          "evidence": [
+            {
+              "chunk_id": "policy_discount_thresholds__sec01__chunk00",
+              "file_name": "policy_discount_thresholds.md},{",
+              "reason": "This document outlines approval thresholds for standard deals, but does not specify if nonprofit education deals have different thresholds."
+            },
+            {
+              "chunk_id": "policy_quote_approval_2025__sec01__chunk00",
+              "file_name": "policy_quote_approval_2025.md",
+              "reason": "This entry provides standard approval rules but lacks details specific to nonprofit education deals."
+            }
+          ],
+          "conflict_warning": "The retrieved documents do not differentiate between approval thresholds for standard deals and nonprofit education deals. The policies may have varying applications depending on specific deal classifications that are not clearly defined in the evidence.",
+          "insufficient_evidence": true
+        },
+        "auto_conflict_match": false,
+        "auto_insufficient_match": true,
+        "manual_groundedness_score": null,
+        "manual_citation_quality_score": null,
+        "manual_expected_summary_match_score": null,
+        "manual_notes": ""
+      }
+    }
+  ]
+}
