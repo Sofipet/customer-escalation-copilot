@@ -2,7 +2,7 @@
 
 A retrieval-augmented AI copilot for resolving customer support escalations using internal knowledge such as release notes, support articles, policy documents, troubleshooting guides, and incident notes.
 
-**Live demo:** [Streamlit App](https://sofipet-customer-escalation-copilot-streamlit-app-zfw5oy.streamlit.app/)  
+**Live demo:** [Streamlit App](https://customer-escalation-copilot-c4rcuwabge3grajo2y5bqy.streamlit.app/)  
 
 ## Overview
 
