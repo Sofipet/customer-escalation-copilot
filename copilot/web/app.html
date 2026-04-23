@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Escalation Resolution Copilot</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="left-rail">
+      <div class="product-block">
+        <div class="eyebrow">Decision Support Copilot</div>
+        <h1>Customer Escalation Resolution Copilot</h1>
+        <p class="subtitle">
+          Policy-grounded support assistant for quote approval escalations.
+        </p>
+      </div>
+
+      <section class="rail-card">
+        <div class="section-title">Mode selection</div>
+        <button id="demoBtn" class="btn btn-secondary btn-full">Load demo example</button>
+        <p class="hint">
+          Demo mode returns a stored example and does not trigger live inference.
+        </p>
+      </section>
+
+      <section class="rail-card">
+        <div class="section-title">Live access</div>
+        <label for="tokenInput">Protection token</label>
+        <input id="tokenInput" type="password" placeholder="Enter access token" />
+        <div class="button-row">
+          <button id="unlockBtn" class="btn btn-primary btn-full">Unlock live mode</button>
+        </div>
+        <div id="tokenStatus" class="status-line">Live mode is locked.</div>
+        <div id="usageText" class="status-line">Live requests are limited.</div>
+      </section>
+
+      <section class="rail-card">
+        <div class="section-title">What the app shows</div>
+        <ul class="feature-list">
+          <li>Final recommended action</li>
+          <li>Owner and handoff logic</li>
+          <li>Warning classification</li>
+          <li>Evidence IDs</li>
+          <li>Top retrieved chunks</li>
+        </ul>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <section class="query-panel">
+        <div class="panel-header">
+          <div>
+            <div class="eyebrow">Input workspace</div>
+            <h2>Submit a support escalation</h2>
+          </div>
+          <div id="modeBadge" class="mode-badge">No response loaded</div>
+        </div>
+
+        <div id="conversation" class="conversation"></div>
+
+        <div class="composer">
+          <label for="questionInput">Escalation text</label>
+          <textarea
+            id="questionInput"
+            placeholder="Example: Customer in Germany cannot complete quote approval after 2409. A support article says manual override is allowed..."
+          ></textarea>
+          <div class="composer-actions">
+            <button id="sendBtn" class="btn btn-primary" disabled>Run live request</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-panel">
+        <div class="summary-grid">
+          <div class="metric-card">
+            <div class="metric-label">Owner</div>
+            <div id="metricOwner" class="metric-value">—</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Handoff</div>
+            <div id="metricHandoff" class="metric-value">—</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Warning</div>
+            <div id="metricWarning" class="metric-value">—</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Evidence IDs</div>
+            <div id="metricEvidenceCount" class="metric-value">—</div>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="section-title">Resolution summary</div>
+          <div id="resolutionContent" class="empty-state">
+            Run the demo example or send a live request to populate the response.
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="retrieval-header">
+            <div class="section-title">Retrieved evidence</div>
+            <button id="toggleRetrievalBtn" class="btn btn-ghost btn-small">Show</button>
+          </div>
+          <div id="retrievalContent" class="retrieval-collapsed empty-state">
+            Retrieved chunks will appear here.
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

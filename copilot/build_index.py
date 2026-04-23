@@ -1,33 +1,40 @@
 from __future__ import annotations
 
+import shutil
+from pathlib import Path
+
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 
+from copilot.chunking import build_chunked_documents
 from copilot.utils import load_markdown_documents
 
-PERSIST_DIRECTORY = "data/artifacts/chroma_db"
-COLLECTION_NAME = "customer_escalation_copilot"
+PERSIST_DIRECTORY = Path("data/artifacts/chroma_db_structured_v2")
+COLLECTION_NAME = "customer_escalation_copilot_structured_v2"
 
 
 def main() -> None:
     docs = load_markdown_documents()
     print(f"Loaded {len(docs)} markdown documents.")
 
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=200,
+    chunked_docs = build_chunked_documents(
+        docs,
+        target_words=180,
+        overlap_words=30,
     )
-    splits = splitter.split_documents(docs)
-    print(f"Created {len(splits)} chunks.")
+    print(f"Created {len(chunked_docs)} chunked documents.")
+
+    if PERSIST_DIRECTORY.exists():
+        shutil.rmtree(PERSIST_DIRECTORY)
+        print(f"Removed existing structured index at {PERSIST_DIRECTORY}")
 
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
     vectorstore = Chroma.from_documents(
-        documents=splits,
+        documents=chunked_docs,
         embedding=embeddings,
         collection_name=COLLECTION_NAME,
-        persist_directory=PERSIST_DIRECTORY,
+        persist_directory=str(PERSIST_DIRECTORY),
     )
 
     print(f"Saved Chroma collection to {PERSIST_DIRECTORY}")

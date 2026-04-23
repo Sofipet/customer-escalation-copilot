@@ -1,75 +1,35 @@
 from __future__ import annotations
 
-from pathlib import Path
+import json
 
-from langchain_chroma import Chroma
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.runnables import RunnablePassthrough
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from copilot.generation import generate_structured_response
+from copilot.retrieval import retrieve_and_rerank
 
-PERSIST_DIRECTORY = "data/artifacts/chroma_db"
-COLLECTION_NAME = "customer_escalation_copilot"
-PROMPT_PATH = Path("copilot/prompts/system_prompt.txt")
-
-
-def format_docs(docs) -> str:
-    formatted = []
-    for i, doc in enumerate(docs, start=1):
-        meta = doc.metadata
-        formatted.append(
-            f"""[Document {i}]
-title: {meta.get('title')}
-file_name: {meta.get('file_name')}
-document_type: {meta.get('document_type')}
-version: {meta.get('version')}
-date: {meta.get('date')}
-region: {meta.get('region')}
-source_authority: {meta.get('source_authority')}
-
-content:
-{doc.page_content}
-"""
-        )
-    return "\n\n" + ("-" * 80 + "\n\n").join(formatted)
+from copilot.tracing import maybe_trace
 
 
 def main() -> None:
-    prompt_text = PROMPT_PATH.read_text(encoding="utf-8").strip()
-
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
-    vectorstore = Chroma(
-        collection_name=COLLECTION_NAME,
-        persist_directory=PERSIST_DIRECTORY,
-        embedding_function=embeddings,
-    )
-
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
-
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
-
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            ("system", prompt_text),
-            ("human", "Customer escalation:\n{question}\n\nRetrieved context:\n{context}"),
-        ]
-    )
-
-    rag_chain = (
-        {
-            "context": retriever | format_docs,
-            "question": RunnablePassthrough(),
-        }
-        | prompt
-        | llm
-        | StrOutputParser()
-    )
-
     question = input("Ask a question / paste an escalation:\n> ").strip()
-    answer = rag_chain.invoke(question)
+    if not question:
+        raise ValueError("Question cannot be empty.")
 
-    print("\n" + "=" * 100)
-    print(answer)
+    with maybe_trace(enabled=True, project="customer-escalation-copilot-v2-dev"):
+        results = retrieve_and_rerank(question, initial_k=10, final_k=5)
+        final_docs = [item["doc"] for item in results]
+
+        print("\nTop reranked chunks:")
+        for i, item in enumerate(results, start=1):
+            doc = item["doc"]
+            meta = doc.metadata
+            print(
+                f"{i}. {meta.get('chunk_id')} | {meta.get('file_name')} | "
+                f"{meta.get('section_title')} | score={item['final_score']:.4f}"
+            )
+
+        structured_response = generate_structured_response(question, final_docs)
+
+        print("\n" + "=" * 100)
+        print(json.dumps(structured_response.model_dump(), ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,144 @@
+[
+  {
+    "case_id": "v2_eval_001",
+    "category": "conflict",
+    "question": "Customer in Germany cannot complete quote approval after 2409. A support article says manual override is allowed, but release notes suggest approval workflow changed. The deal is a strategic renewal. What should support do next?",
+    "required_docs": [
+      "release_notes_2409_approval_workflow_change.md",
+      "policy_quote_approval_2025.md"
+    ],
+    "supporting_docs": [
+      "kb_manual_override_legacy_guidance.md",
+      "policy_strategic_renewal_exceptions.md"
+    ],
+    "notes": "Core answer requires newer release and current policy. Legacy KB and strategic-renewal exception guidance strengthen conflict framing and routing."
+  },
+  {
+    "case_id": "v2_eval_002",
+    "category": "conflict",
+    "question": "Support found a legacy Germany KB article allowing manual override below 20%, but the customer’s blocked quote is a protected strategic renewal after release 2409. Which guidance should be trusted and what should support do next?",
+    "required_docs": [
+      "release_notes_2409_approval_workflow_change.md",
+      "policy_strategic_renewal_exceptions.md"
+    ],
+    "supporting_docs": [
+      "kb_manual_override_germany.md",
+      "policy_quote_approval_2025.md"
+    ],
+    "notes": "The release note and strategic-renewal exception policy are core. Germany KB is supporting stale/conflict context."
+  },
+  {
+    "case_id": "v2_eval_003",
+    "category": "conflict",
+    "question": "A customer escalation cites an older support workaround saying approval failures in Germany can be manually overridden, but current release guidance after 2409 restricts override for protected renewal paths. What should support do?",
+    "required_docs": [
+      "release_notes_2409_approval_workflow_change.md"
+    ],
+    "supporting_docs": [
+      "kb_manual_override_legacy_guidance.md",
+      "policy_quote_approval_2025.md",
+      "policy_strategic_renewal_exceptions.md"
+    ],
+    "notes": "The newer release note is core. Supporting documents add stale guidance and policy context."
+  },
+  {
+    "case_id": "v2_eval_004",
+    "category": "stale_guidance",
+    "question": "Which document should support trust for current quote approval rules, and should older 2024 guidance still be relied on?",
+    "required_docs": [
+      "policy_quote_approval_2025.md",
+      "policy_quote_approval_2024.md"
+    ],
+    "supporting_docs": [],
+    "notes": "Both old and new policy documents are required to classify stale guidance correctly."
+  },
+  {
+    "case_id": "v2_eval_005",
+    "category": "stale_guidance",
+    "question": "Support wants to know whether the 2024 quote approval policy can still be used for current approval decisions after the 2025 policy rollout. Which source should be trusted now?",
+    "required_docs": [
+      "policy_quote_approval_2025.md",
+      "policy_quote_approval_2024.md"
+    ],
+    "supporting_docs": [],
+    "notes": "The comparison between 2025 and 2024 policy is the core retrieval need."
+  },
+  {
+    "case_id": "v2_eval_006",
+    "category": "stale_guidance",
+    "question": "A support agent found both the 2024 and 2025 quote approval policies while checking current approval rules. Which document should they rely on for current workflow guidance?",
+    "required_docs": [
+      "policy_quote_approval_2025.md",
+      "policy_quote_approval_2024.md"
+    ],
+    "supporting_docs": [
+      "policy_support_escalation_guidelines.md"
+    ],
+    "notes": "The two policy versions are required. Escalation guidelines are useful support but not strictly necessary."
+  },
+  {
+    "case_id": "v2_eval_007",
+    "category": "routing",
+    "question": "A strategic renewal deal is blocked during quote approval after 2409. Is manual override still allowed and what should support do next?",
+    "required_docs": [
+      "policy_strategic_renewal_exceptions.md",
+      "policy_quote_approval_2025.md"
+    ],
+    "supporting_docs": [
+      "release_notes_2409_approval_workflow_change.md"
+    ],
+    "notes": "Current policy and strategic-renewal exception guidance are core. Release note is useful supporting context."
+  },
+  {
+    "case_id": "v2_eval_008",
+    "category": "routing",
+    "question": "Support confirmed a blocked quote belongs to a strategic renewal and includes protected approval routing. What should support do next?",
+    "required_docs": [
+      "policy_strategic_renewal_exceptions.md"
+    ],
+    "supporting_docs": [
+      "policy_quote_approval_2025.md"
+    ],
+    "notes": "Strategic-renewal exception handling is core. Current policy is useful support."
+  },
+  {
+    "case_id": "v2_eval_009",
+    "category": "insufficient_detail",
+    "question": "What is the exact approval threshold for nonprofit education deals in Canada after 2409?",
+    "required_docs": [],
+    "supporting_docs": [],
+    "notes": "This case should remain insufficient-detail. No document in the corpus is required because the exact answer is not defined."
+  },
+  {
+    "case_id": "v2_eval_010",
+    "category": "insufficient_detail",
+    "question": "What is the exact approval route for a university nonprofit renewal in Canada when the account is education-related and the workflow changed after 2409?",
+    "required_docs": [],
+    "supporting_docs": [],
+    "notes": "This case should remain insufficient-detail. Nearby docs may be retrieved, but no exact route is defined."
+  },
+  {
+    "case_id": "v2_eval_011",
+    "category": "direct_policy",
+    "question": "Which document should support trust for current standard quote approval rules?",
+    "required_docs": [
+      "policy_quote_approval_2025.md"
+    ],
+    "supporting_docs": [
+      "policy_support_escalation_guidelines.md"
+    ],
+    "notes": "Current policy is core. Escalation guidelines are useful support but not mandatory."
+  },
+  {
+    "case_id": "v2_eval_012",
+    "category": "direct_policy",
+    "question": "A support agent needs the current policy baseline for quote approval decisions. Which source should be used?",
+    "required_docs": [
+      "policy_quote_approval_2025.md"
+    ],
+    "supporting_docs": [
+      "policy_support_escalation_guidelines.md"
+    ],
+    "notes": "Current policy is the main required source. Support guidance is secondary."
+  }
+]

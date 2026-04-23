@@ -1,0 +1,500 @@
+{
+  "summary": {
+    "cases_total": 12,
+    "warning_type_accuracy": 0.583,
+    "insufficient_evidence_accuracy": 0.833,
+    "owner_accuracy": 0.5,
+    "requires_human_handoff_accuracy": 0.833,
+    "valid_evidence_ids_rate": 1.0
+  },
+  "results": [
+    {
+      "case_id": "v2_eval_001",
+      "category": "conflict",
+      "question": "Customer in Germany cannot complete quote approval after 2409. A support article says manual override is allowed, but release notes suggest approval workflow changed. The deal is a strategic renewal. What should support do next?",
+      "expected_warning_type": "conflict",
+      "expected_insufficient_evidence": false,
+      "expected_owner": "Revenue Operations",
+      "expected_requires_human_handoff": true,
+      "retrieved_chunk_ids": [
+        "policy_quote_approval_2024__sec05__chunk00",
+        "release_notes_2409_approval_workflow_change__sec01__chunk00",
+        "policy_quote_approval_2025__sec05__chunk00",
+        "release_notes_2409_approval_workflow_change__sec00__chunk00",
+        "policy_quote_approval_2024__sec02__chunk00"
+      ],
+      "response": {
+        "likely_issue": "Workflow change restricts manual override availability for strategic renewals and protected routing paths.",
+        "recommended_next_step": "Verify the deal type, applicable discount level, and workflow version before confirming the next step.",
+        "recommended_owner": "Revenue Operations",
+        "recommended_queue": null,
+        "requires_human_handoff": true,
+        "handoff_reason": "Strategic renewal approval handling requires Revenue Operations review.",
+        "evidence_ids": [],
+        "warning_type": "none",
+        "warning_message": "",
+        "insufficient_evidence": false
+      },
+      "auto_eval": {
+        "warning_type_match": false,
+        "insufficient_evidence_match": true,
+        "owner_match": true,
+        "requires_human_handoff_match": true,
+        "valid_evidence_ids": true,
+        "manual_groundedness_score": null,
+        "manual_actionability_score": null,
+        "manual_warning_quality_score": null,
+        "manual_owner_rationale_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "v2_eval_002",
+      "category": "conflict",
+      "question": "Support found a legacy Germany KB article allowing manual override below 20%, but the customer’s blocked quote is a protected strategic renewal after release 2409. Which guidance should be trusted and what should support do next?",
+      "expected_warning_type": "conflict",
+      "expected_insufficient_evidence": false,
+      "expected_owner": "Revenue Operations",
+      "expected_requires_human_handoff": true,
+      "retrieved_chunk_ids": [
+        "incident_summary_germany_approval_failures__sec02__chunk00",
+        "policy_regional_approval_rules__sec02__chunk00",
+        "release_notes_2409_approval_workflow_change__sec01__chunk00",
+        "incident_summary_germany_approval_failures__sec01__chunk00",
+        "release_notes_2409_approval_workflow_change__sec03__chunk00"
+      ],
+      "response": {
+        "likely_issue": "policy conflict",
+        "recommended_next_step": "check deal classification, region, and release context before recommending override",
+        "recommended_owner": "Product Operations",
+        "recommended_queue": null,
+        "requires_human_handoff": true,
+        "handoff_reason": "Workflow and release-related approval behavior requires Product Operations review.",
+        "evidence_ids": [
+          "release_notes_2409_approval_workflow_change__sec01__chunk00",
+          "policy_regional_approval_rules__sec02__chunk00"
+        ],
+        "warning_type": "conflict",
+        "warning_message": "",
+        "insufficient_evidence": false
+      },
+      "auto_eval": {
+        "warning_type_match": true,
+        "insufficient_evidence_match": true,
+        "owner_match": false,
+        "requires_human_handoff_match": true,
+        "valid_evidence_ids": true,
+        "manual_groundedness_score": null,
+        "manual_actionability_score": null,
+        "manual_warning_quality_score": null,
+        "manual_owner_rationale_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "v2_eval_003",
+      "category": "conflict",
+      "question": "A customer escalation cites an older support workaround saying approval failures in Germany can be manually overridden, but current release guidance after 2409 restricts override for protected renewal paths. What should support do?",
+      "expected_warning_type": "conflict",
+      "expected_insufficient_evidence": false,
+      "expected_owner": "Revenue Operations",
+      "expected_requires_human_handoff": true,
+      "retrieved_chunk_ids": [
+        "incident_summary_germany_approval_failures__sec02__chunk00",
+        "policy_strategic_renewal_exceptions__sec02__chunk00",
+        "policy_regional_approval_rules__sec02__chunk00",
+        "release_notes_2409_approval_workflow_change__sec01__chunk00",
+        "release_notes_2409_approval_workflow_change__sec03__chunk00"
+      ],
+      "response": {
+        "likely_issue": "restricted override for protected renewal paths",
+        "recommended_next_step": "Escalate for manual review based on the retrieved evidence.",
+        "recommended_owner": "Support",
+        "recommended_queue": null,
+        "requires_human_handoff": false,
+        "handoff_reason": "",
+        "evidence_ids": [],
+        "warning_type": "none",
+        "warning_message": "",
+        "insufficient_evidence": false
+      },
+      "auto_eval": {
+        "warning_type_match": false,
+        "insufficient_evidence_match": true,
+        "owner_match": false,
+        "requires_human_handoff_match": false,
+        "valid_evidence_ids": true,
+        "manual_groundedness_score": null,
+        "manual_actionability_score": null,
+        "manual_warning_quality_score": null,
+        "manual_owner_rationale_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "v2_eval_004",
+      "category": "stale_guidance",
+      "question": "Which document should support trust for current quote approval rules, and should older 2024 guidance still be relied on?",
+      "expected_warning_type": "stale_guidance",
+      "expected_insufficient_evidence": false,
+      "expected_owner": "Support",
+      "expected_requires_human_handoff": false,
+      "retrieved_chunk_ids": [
+        "policy_quote_approval_2024__sec00__chunk00",
+        "policy_quote_approval_2025__sec00__chunk00",
+        "policy_quote_approval_2025__sec05__chunk00",
+        "release_notes_2409_approval_workflow_change__sec00__chunk00",
+        "policy_discount_thresholds__sec03__chunk00"
+      ],
+      "response": {
+        "likely_issue": "Insufficient_evidence",
+        "recommended_next_step": "Review the latest high-authority guidance (Document 1, 3) for current quote approval rules.",
+        "recommended_owner": "Unknown",
+        "recommended_queue": null,
+        "requires_human_handoff": false,
+        "handoff_reason": "",
+        "evidence_ids": [],
+        "warning_type": "insufficient_detail",
+        "warning_message": "",
+        "insufficient_evidence": true
+      },
+      "auto_eval": {
+        "warning_type_match": false,
+        "insufficient_evidence_match": false,
+        "owner_match": false,
+        "requires_human_handoff_match": true,
+        "valid_evidence_ids": true,
+        "manual_groundedness_score": null,
+        "manual_actionability_score": null,
+        "manual_warning_quality_score": null,
+        "manual_owner_rationale_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "v2_eval_005",
+      "category": "stale_guidance",
+      "question": "Support wants to know whether the 2024 quote approval policy can still be used for current approval decisions after the 2025 policy rollout. Which source should be trusted now?",
+      "expected_warning_type": "stale_guidance",
+      "expected_insufficient_evidence": false,
+      "expected_owner": "Support",
+      "expected_requires_human_handoff": false,
+      "retrieved_chunk_ids": [
+        "policy_discount_thresholds__sec00__chunk00",
+        "policy_quote_approval_2024__sec00__chunk00",
+        "policy_quote_approval_2025__sec00__chunk00",
+        "release_notes_2409_approval_workflow_change__sec00__chunk00",
+        "policy_discount_thresholds__sec03__chunk00"
+      ],
+      "response": {
+        "likely_issue": "2024 quote approval policy still valid after 2025 policy rollout",
+        "recommended_next_step": "Recommend the 2024 policy as the source",
+        "recommended_owner": "Support",
+        "recommended_queue": null,
+        "requires_human_handoff": false,
+        "handoff_reason": "",
+        "evidence_ids": [],
+        "warning_type": "none",
+        "warning_message": "",
+        "insufficient_evidence": false
+      },
+      "auto_eval": {
+        "warning_type_match": false,
+        "insufficient_evidence_match": true,
+        "owner_match": true,
+        "requires_human_handoff_match": true,
+        "valid_evidence_ids": true,
+        "manual_groundedness_score": null,
+        "manual_actionability_score": null,
+        "manual_warning_quality_score": null,
+        "manual_owner_rationale_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "v2_eval_006",
+      "category": "stale_guidance",
+      "question": "A support agent found both the 2024 and 2025 quote approval policies while checking current approval rules. Which document should they rely on for current workflow guidance?",
+      "expected_warning_type": "stale_guidance",
+      "expected_insufficient_evidence": false,
+      "expected_owner": "Support",
+      "expected_requires_human_handoff": false,
+      "retrieved_chunk_ids": [
+        "policy_quote_approval_2024__sec00__chunk00",
+        "policy_quote_approval_2025__sec00__chunk00",
+        "policy_regional_approval_rules__sec00__chunk00",
+        "release_notes_2409_approval_workflow_change__sec00__chunk00",
+        "policy_discount_thresholds__sec03__chunk00"
+      ],
+      "response": {
+        "likely_issue": "current quote approval policies",
+        "recommended_next_step": "combine with current policies and the latest release guidance",
+        "recommended_owner": "Product Operations",
+        "recommended_queue": null,
+        "requires_human_handoff": true,
+        "handoff_reason": "Workflow and release-related approval behavior requires Product Operations review.",
+        "evidence_ids": [
+          "policy_quote_approval_2025__sec00__chunk00",
+          "policy_quote_approval_2024__sec00__chunk00",
+          "policy_discount_thresholds__sec03__chunk00",
+          "release_notes_2409_approval_workflow_change__sec00__chunk00"
+        ],
+        "warning_type": "stale_guidance",
+        "warning_message": "",
+        "insufficient_evidence": false
+      },
+      "auto_eval": {
+        "warning_type_match": true,
+        "insufficient_evidence_match": true,
+        "owner_match": false,
+        "requires_human_handoff_match": false,
+        "valid_evidence_ids": true,
+        "manual_groundedness_score": null,
+        "manual_actionability_score": null,
+        "manual_warning_quality_score": null,
+        "manual_owner_rationale_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "v2_eval_007",
+      "category": "routing",
+      "question": "A strategic renewal deal is blocked during quote approval after 2409. Is manual override still allowed and what should support do next?",
+      "expected_warning_type": "none",
+      "expected_insufficient_evidence": false,
+      "expected_owner": "Revenue Operations",
+      "expected_requires_human_handoff": true,
+      "retrieved_chunk_ids": [
+        "policy_quote_approval_2025__sec00__chunk00",
+        "policy_strategic_renewal_exceptions__sec03__chunk00",
+        "policy_strategic_renewal_exceptions__sec02__chunk00",
+        "policy_quote_approval_2025__sec02__chunk00",
+        "policy_quote_approval_2025__sec04__chunk00"
+      ],
+      "response": {
+        "likely_issue": "manual override not allowed for strategic renewals with protected approval routing",
+        "recommended_next_step": "route the case to Revenue Operations or Pricing Operations depending on the exception type",
+        "recommended_owner": "Revenue Operations",
+        "recommended_queue": null,
+        "requires_human_handoff": true,
+        "handoff_reason": "Strategic renewal approval handling requires Revenue Operations review.",
+        "evidence_ids": [],
+        "warning_type": "none",
+        "warning_message": "",
+        "insufficient_evidence": false
+      },
+      "auto_eval": {
+        "warning_type_match": true,
+        "insufficient_evidence_match": true,
+        "owner_match": true,
+        "requires_human_handoff_match": true,
+        "valid_evidence_ids": true,
+        "manual_groundedness_score": null,
+        "manual_actionability_score": null,
+        "manual_warning_quality_score": null,
+        "manual_owner_rationale_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "v2_eval_008",
+      "category": "routing",
+      "question": "Support confirmed a blocked quote belongs to a strategic renewal and includes protected approval routing. What should support do next?",
+      "expected_warning_type": "none",
+      "expected_insufficient_evidence": false,
+      "expected_owner": "Revenue Operations",
+      "expected_requires_human_handoff": true,
+      "retrieved_chunk_ids": [
+        "policy_strategic_renewal_exceptions__sec03__chunk00",
+        "policy_support_escalation_guidelines__sec00__chunk00",
+        "policy_strategic_renewal_exceptions__sec02__chunk00",
+        "release_notes_2408_quote_approval_updates__sec01__chunk00",
+        "policy_discount_thresholds__sec03__chunk00"
+      ],
+      "response": {
+        "likely_issue": "Support should confirm deal classification, collect contract value and discount, and route the case to Revenue Operations or Pricing Operations based on the exception type.",
+        "recommended_next_step": "Escalate for manual review based on the retrieved evidence.",
+        "recommended_owner": "Pricing Operations",
+        "recommended_queue": null,
+        "requires_human_handoff": true,
+        "handoff_reason": "Threshold and pricing-related approval handling requires Pricing Operations review.",
+        "evidence_ids": [],
+        "warning_type": "none",
+        "warning_message": "",
+        "insufficient_evidence": false
+      },
+      "auto_eval": {
+        "warning_type_match": true,
+        "insufficient_evidence_match": true,
+        "owner_match": false,
+        "requires_human_handoff_match": true,
+        "valid_evidence_ids": true,
+        "manual_groundedness_score": null,
+        "manual_actionability_score": null,
+        "manual_warning_quality_score": null,
+        "manual_owner_rationale_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "v2_eval_009",
+      "category": "insufficient_detail",
+      "question": "What is the exact approval threshold for nonprofit education deals in Canada after 2409?",
+      "expected_warning_type": "insufficient_detail",
+      "expected_insufficient_evidence": true,
+      "expected_owner": "Unknown",
+      "expected_requires_human_handoff": false,
+      "retrieved_chunk_ids": [
+        "policy_quote_approval_2024__sec00__chunk00",
+        "policy_quote_approval_2025__sec00__chunk00",
+        "policy_discount_thresholds__sec01__chunk00",
+        "release_notes_2402_quote_rules__sec00__chunk00",
+        "release_notes_2409_approval_workflow_change__sec00__chunk00"
+      ],
+      "response": {
+        "likely_issue": "Insufficient evidence to specify the exact approval threshold for nonprofit education deals in Canada after 2029.",
+        "recommended_next_step": "Check the latest policy documents for updated guidelines.",
+        "recommended_owner": "Unknown",
+        "recommended_queue": null,
+        "requires_human_handoff": false,
+        "handoff_reason": "",
+        "evidence_ids": [],
+        "warning_type": "insufficient_detail",
+        "warning_message": "",
+        "insufficient_evidence": true
+      },
+      "auto_eval": {
+        "warning_type_match": true,
+        "insufficient_evidence_match": true,
+        "owner_match": true,
+        "requires_human_handoff_match": true,
+        "valid_evidence_ids": true,
+        "manual_groundedness_score": null,
+        "manual_actionability_score": null,
+        "manual_warning_quality_score": null,
+        "manual_owner_rationale_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "v2_eval_010",
+      "category": "insufficient_detail",
+      "question": "What is the exact approval route for a university nonprofit renewal in Canada when the account is education-related and the workflow changed after 2409?",
+      "expected_warning_type": "insufficient_detail",
+      "expected_insufficient_evidence": true,
+      "expected_owner": "Unknown",
+      "expected_requires_human_handoff": false,
+      "retrieved_chunk_ids": [
+        "policy_strategic_renewal_exceptions__sec03__chunk00",
+        "policy_strategic_renewal_exceptions__sec02__chunk00",
+        "release_notes_2407_renewal_thresholds__sec01__chunk00",
+        "release_notes_2408_quote_approval_updates__sec01__chunk00",
+        "release_notes_2409_approval_workflow_change__sec00__chunk00"
+      ],
+      "response": {
+        "likely_issue": "The exact approval route for a university nonprofit renewal in Canada has changed to stricter routing when contract value exceeds €100,000, as per Document 1.",
+        "recommended_next_step": "Escalate for manual review based on the retrieved evidence.",
+        "recommended_owner": "Unknown",
+        "recommended_queue": null,
+        "requires_human_handoff": false,
+        "handoff_reason": "",
+        "evidence_ids": [],
+        "warning_type": "insufficient_detail",
+        "warning_message": "",
+        "insufficient_evidence": true
+      },
+      "auto_eval": {
+        "warning_type_match": true,
+        "insufficient_evidence_match": true,
+        "owner_match": true,
+        "requires_human_handoff_match": true,
+        "valid_evidence_ids": true,
+        "manual_groundedness_score": null,
+        "manual_actionability_score": null,
+        "manual_warning_quality_score": null,
+        "manual_owner_rationale_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "v2_eval_011",
+      "category": "direct_policy",
+      "question": "Which document should support trust for current standard quote approval rules?",
+      "expected_warning_type": "none",
+      "expected_insufficient_evidence": false,
+      "expected_owner": "Support",
+      "expected_requires_human_handoff": false,
+      "retrieved_chunk_ids": [
+        "policy_quote_approval_2024__sec00__chunk00",
+        "policy_quote_approval_2025__sec00__chunk00",
+        "policy_support_escalation_guidelines__sec00__chunk00",
+        "policy_regional_approval_rules__sec00__chunk00",
+        "release_notes_2409_approval_workflow_change__sec00__chunk00"
+      ],
+      "response": {
+        "likely_issue": "Supporting trust for current standard quote approval rules",
+        "recommended_next_step": "Review the 2025 policy document to ensure alignment with current approval procedures.",
+        "recommended_owner": "Support",
+        "recommended_queue": null,
+        "requires_human_handoff": false,
+        "handoff_reason": "",
+        "evidence_ids": [],
+        "warning_type": "none",
+        "warning_message": "",
+        "insufficient_evidence": false
+      },
+      "auto_eval": {
+        "warning_type_match": true,
+        "insufficient_evidence_match": true,
+        "owner_match": true,
+        "requires_human_handoff_match": true,
+        "valid_evidence_ids": true,
+        "manual_groundedness_score": null,
+        "manual_actionability_score": null,
+        "manual_warning_quality_score": null,
+        "manual_owner_rationale_score": null,
+        "manual_notes": ""
+      }
+    },
+    {
+      "case_id": "v2_eval_012",
+      "category": "direct_policy",
+      "question": "A support agent needs the current policy baseline for quote approval decisions. Which source should be used?",
+      "expected_warning_type": "none",
+      "expected_insufficient_evidence": false,
+      "expected_owner": "Support",
+      "expected_requires_human_handoff": false,
+      "retrieved_chunk_ids": [
+        "policy_discount_thresholds__sec00__chunk00",
+        "policy_quote_approval_2025__sec00__chunk00",
+        "policy_quote_approval_2024__sec00__chunk00",
+        "policy_support_escalation_guidelines__sec00__chunk00",
+        "policy_discount_thresholds__sec03__chunk00"
+      ],
+      "response": {
+        "likely_issue": "Insufficient_evidence",
+        "recommended_next_step": "Check Document 2 (Quote Approval Policy 2025) for current policy baseline.",
+        "recommended_owner": "Unknown",
+        "recommended_queue": null,
+        "requires_human_handoff": false,
+        "handoff_reason": "",
+        "evidence_ids": [],
+        "warning_type": "insufficient_detail",
+        "warning_message": "",
+        "insufficient_evidence": true
+      },
+      "auto_eval": {
+        "warning_type_match": false,
+        "insufficient_evidence_match": false,
+        "owner_match": false,
+        "requires_human_handoff_match": true,
+        "valid_evidence_ids": true,
+        "manual_groundedness_score": null,
+        "manual_actionability_score": null,
+        "manual_warning_quality_score": null,
+        "manual_owner_rationale_score": null,
+        "manual_notes": ""
+      }
+    }
+  ]
+}

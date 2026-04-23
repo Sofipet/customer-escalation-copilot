@@ -1,0 +1,122 @@
+[
+  {
+    "case_id": "v2_eval_001",
+    "category": "conflict",
+    "question": "Customer in Germany cannot complete quote approval after 2409. A support article says manual override is allowed, but release notes suggest approval workflow changed. The deal is a strategic renewal. What should support do next?",
+    "expected_warning_type": "conflict",
+    "expected_insufficient_evidence": false,
+    "expected_owner": "Revenue Operations",
+    "expected_requires_human_handoff": true,
+    "expected_answer_summary": "The answer should explain that older override guidance conflicts with newer release and policy guidance, state that override is not allowed, and route the case to Revenue Operations."
+  },
+  {
+    "case_id": "v2_eval_002",
+    "category": "conflict",
+    "question": "Support found a legacy Germany KB article allowing manual override below 20%, but the customer’s blocked quote is a protected strategic renewal after release 2409. Which guidance should be trusted and what should support do next?",
+    "expected_warning_type": "conflict",
+    "expected_insufficient_evidence": false,
+    "expected_owner": "Revenue Operations",
+    "expected_requires_human_handoff": true,
+    "expected_answer_summary": "The answer should prefer newer guidance over the legacy KB, identify the case as non-overridable, and route it to Revenue Operations."
+  },
+  {
+    "case_id": "v2_eval_003",
+    "category": "conflict",
+    "question": "A customer escalation cites an older support workaround saying approval failures in Germany can be manually overridden, but current release guidance after 2409 restricts override for protected renewal paths. What should support do?",
+    "expected_warning_type": "conflict",
+    "expected_insufficient_evidence": false,
+    "expected_owner": "Revenue Operations",
+    "expected_requires_human_handoff": true,
+    "expected_answer_summary": "The answer should warn about conflicting old versus current guidance, reject manual override, and recommend escalation to Revenue Operations."
+  },
+  {
+    "case_id": "v2_eval_004",
+    "category": "stale_guidance",
+    "question": "Which document should support trust for current quote approval rules, and should older 2024 guidance still be relied on?",
+    "expected_warning_type": "stale_guidance",
+    "expected_insufficient_evidence": false,
+    "expected_owner": "Support",
+    "expected_requires_human_handoff": false,
+    "expected_answer_summary": "The answer should identify the 2025 policy as the current source and explain that 2024 guidance is older and should not be relied on as primary current guidance."
+  },
+  {
+    "case_id": "v2_eval_005",
+    "category": "stale_guidance",
+    "question": "Support wants to know whether the 2024 quote approval policy can still be used for current approval decisions after the 2025 policy rollout. Which source should be trusted now?",
+    "expected_warning_type": "stale_guidance",
+    "expected_insufficient_evidence": false,
+    "expected_owner": "Support",
+    "expected_requires_human_handoff": false,
+    "expected_answer_summary": "The answer should prefer the 2025 policy and classify the 2024 policy as older guidance."
+  },
+  {
+    "case_id": "v2_eval_006",
+    "category": "stale_guidance",
+    "question": "A support agent found both the 2024 and 2025 quote approval policies while checking current approval rules. Which document should they rely on for current workflow guidance?",
+    "expected_warning_type": "stale_guidance",
+    "expected_insufficient_evidence": false,
+    "expected_owner": "Support",
+    "expected_requires_human_handoff": false,
+    "expected_answer_summary": "The answer should recommend the 2025 policy as the current baseline and treat the 2024 policy as stale for current workflow decisions."
+  },
+  {
+    "case_id": "v2_eval_007",
+    "category": "routing",
+    "question": "A strategic renewal deal is blocked during quote approval after 2409. Is manual override still allowed and what should support do next?",
+    "expected_warning_type": "none",
+    "expected_insufficient_evidence": false,
+    "expected_owner": "Revenue Operations",
+    "expected_requires_human_handoff": true,
+    "expected_answer_summary": "The answer should state that manual override is not allowed for the case and route it to Revenue Operations."
+  },
+  {
+    "case_id": "v2_eval_008",
+    "category": "routing",
+    "question": "Support confirmed a blocked quote belongs to a strategic renewal and includes protected approval routing. What should support do next?",
+    "expected_warning_type": "none",
+    "expected_insufficient_evidence": false,
+    "expected_owner": "Revenue Operations",
+    "expected_requires_human_handoff": true,
+    "expected_answer_summary": "The answer should recommend collecting the needed details and routing the case to Revenue Operations."
+  },
+  {
+    "case_id": "v2_eval_009",
+    "category": "insufficient_detail",
+    "question": "What is the exact approval threshold for nonprofit education deals in Canada after 2409?",
+    "expected_warning_type": "insufficient_detail",
+    "expected_insufficient_evidence": true,
+    "expected_owner": "Unknown",
+    "expected_requires_human_handoff": false,
+    "expected_answer_summary": "The answer should avoid inventing an exact threshold, clearly state the evidence is insufficient, and keep the owner as Unknown."
+  },
+  {
+    "case_id": "v2_eval_010",
+    "category": "insufficient_detail",
+    "question": "What is the exact approval route for a university nonprofit renewal in Canada when the account is education-related and the workflow changed after 2409?",
+    "expected_warning_type": "insufficient_detail",
+    "expected_insufficient_evidence": true,
+    "expected_owner": "Unknown",
+    "expected_requires_human_handoff": false,
+    "expected_answer_summary": "The answer should say the evidence does not define the exact route and should not invent a supported handoff owner."
+  },
+  {
+    "case_id": "v2_eval_011",
+    "category": "direct_policy",
+    "question": "Which document should support trust for current standard quote approval rules?",
+    "expected_warning_type": "none",
+    "expected_insufficient_evidence": false,
+    "expected_owner": "Support",
+    "expected_requires_human_handoff": false,
+    "expected_answer_summary": "The answer should identify the 2025 policy as the main current source and remain support-owned."
+  },
+  {
+    "case_id": "v2_eval_012",
+    "category": "direct_policy",
+    "question": "A support agent needs the current policy baseline for quote approval decisions. Which source should be used?",
+    "expected_warning_type": "none",
+    "expected_insufficient_evidence": false,
+    "expected_owner": "Support",
+    "expected_requires_human_handoff": false,
+    "expected_answer_summary": "The answer should point to the 2025 policy as the current baseline and not force escalation."
+  }
+]

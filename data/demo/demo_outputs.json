@@ -1,0 +1,50 @@
+{
+  "mode": "demo",
+  "escalation_text": "Customer in Germany cannot complete quote approval after 2409. A support article says manual override is allowed, but release notes suggest approval workflow changed. The deal is a strategic renewal. What should support do next?",
+  "likely_issue": "The deal is a strategic renewal, and release 2409 restricts manual override for protected approval routing paths.",
+  "recommended_next_step": "Support should not attempt manual override. Confirm the deal classification, capture workflow error details, and route the case to Revenue Operations.",
+  "recommended_owner": "Revenue Operations",
+  "recommended_queue": null,
+  "requires_human_handoff": true,
+  "handoff_reason": "Strategic renewal approval handling requires Revenue Operations review.",
+  "evidence_ids": [
+    "release_notes_2409_approval_workflow_change__sec01__chunk00",
+    "policy_strategic_renewal_exceptions__sec02__chunk00",
+    "policy_quote_approval_2025__sec04__chunk00"
+  ],
+  "warning_type": "conflict",
+  "warning_message": "Older override assumptions conflict with newer release and policy guidance.",
+  "insufficient_evidence": false,
+  "retrieved_chunks": [
+    {
+      "chunk_id": "release_notes_2409_approval_workflow_change__sec01__chunk00",
+      "file_name": "release_notes_2409_approval_workflow_change.md",
+      "title": "Release 2409 Approval Workflow Change",
+      "section_title": "What changed",
+      "document_type": "release_note",
+      "version": "2409",
+      "final_score": 1.143,
+      "content": "Manual override availability was restricted for strategic renewals and for cases entering protected regional routing paths. Germany and EU accounts affected by the new routing logic may no longer display or permit override in scenarios that were previously eligible."
+    },
+    {
+      "chunk_id": "policy_strategic_renewal_exceptions__sec02__chunk00",
+      "file_name": "policy_strategic_renewal_exceptions.md",
+      "title": "Strategic Renewal Exceptions",
+      "section_title": "Protected routing",
+      "document_type": "policy",
+      "version": "2025",
+      "final_score": 1.062,
+      "content": "Protected strategic renewal routes are not support-overridable. Cases in this category must be routed for specialist handling."
+    },
+    {
+      "chunk_id": "policy_quote_approval_2025__sec04__chunk00",
+      "file_name": "policy_quote_approval_2025.md",
+      "title": "Quote Approval Policy 2025",
+      "section_title": "Support guidance",
+      "document_type": "policy",
+      "version": "2025",
+      "final_score": 0.997,
+      "content": "If a strategic renewal case is blocked in the approval workflow, support should confirm deal classification, collect relevant evidence, and route the case according to the current policy rather than relying on older override assumptions."
+    }
+  ]
+}

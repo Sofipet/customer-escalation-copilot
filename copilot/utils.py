@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from typing import List
 
@@ -7,6 +8,12 @@ import frontmatter
 from langchain_core.documents import Document
 
 RAW_DATA_DIR = Path("data/raw")
+
+
+def clean_text(text: str) -> str:
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
 
 
 def load_markdown_documents(root: Path = RAW_DATA_DIR) -> List[Document]:
@@ -28,7 +35,7 @@ def load_markdown_documents(root: Path = RAW_DATA_DIR) -> List[Document]:
             "source_authority": post.get("source_authority"),
         }
 
-        content = post.content.strip()
+        content = clean_text(post.content)
         if not content:
             continue
 
