@@ -2,8 +2,9 @@
 
 A retrieval-augmented support copilot for resolving quote-approval escalations using internal guidance such as release notes, policy documents, support articles, troubleshooting guides, and incident summaries.
 
-- **V2 Live demo:** [Render App](https://customer-escalation-copilot.onrender.com) 
-- **V1 Streamlit demo:** [Streamlit App](https://customer-escalation-copilot-c4rcuwabge3grajo2y5bqy.streamlit.app/)
+- **V2 Live demo:** [Render App](https://customer-escalation-copilot.onrender.com)
+  
+- **V1 Prototype:** [Streamlit App](https://customer-escalation-copilot-c4rcuwabge3grajo2y5bqy.streamlit.app/)
 
 ## Overview
 
@@ -11,18 +12,22 @@ Support teams often work across fragmented documentation, overlapping guidance, 
 
 The system is designed as a **decision-support tool**, not an autonomous agent. It does not update tickets or mutate external systems. Its purpose is to help support and operations users reach the correct next action faster and with a clearer evidence trail.
 
+## V1 to V2 evolution
+
+The project began as a simpler **V1 Streamlit prototype** focused on retrieval and basic answer generation. In **V2**, it was redesigned as a more production-realistic decision-support system with a structured response schema, stronger retrieval setup, explicit evaluation, a protected live mode, a custom UI, and Dockerized deployment. The shift from V1 to V2 was not only a UI upgrade, but a move toward a more disciplined product and engineering architecture.
+
 ## What the system does
 
-Given a customer escalation:
+Given a customer escalation, it:
 
-1. retrieves the most relevant internal guidance
-2. reranks the retrieved evidence
-3. generates a structured recommendation
-4. identifies the likely issue
-5. recommends the next practical step
-6. assigns the likely owner for the next action
-7. flags stale guidance, conflict, or insufficient detail when relevant
-8. returns evidence IDs and retrieved chunks for inspection
+- retrieves the most relevant internal guidance
+- reranks the retrieved evidence
+- generates a structured recommendation
+- identifies the likely issue
+- recommends the next practical step
+- assigns the likely owner for the next action
+- flags stale guidance, conflict, or insufficient detail when relevant
+- returns evidence IDs and retrieved chunks for inspection
 
 ## Example use case
 
@@ -33,7 +38,7 @@ The system retrieves policy and release guidance, identifies that the case is a 
 ## Architecture
 
 ### Retrieval layer
-- Markdown corpus
+- markdown corpus
 - metadata-aware chunking
 - embedding-based semantic retrieval
 - reranking over retrieved candidates
@@ -50,6 +55,17 @@ The system retrieves policy and release guidance, identifies that the case is a 
 - custom HTML/CSS/JS interface
 - Dockerized deployment
 - public demo mode + protected live mode
+
+## Model setup
+
+### Retrieval
+- Embedding model (baseline): `text-embedding-3-small`
+- Vector store: Chroma
+
+### Generation
+- Primary baseline: `gpt-4o-mini`
+- Open-source comparison: `Qwen3-0.6B` via local serving
+
 
 ## Tech stack
 
@@ -115,10 +131,33 @@ The interface shows:
 - evidence IDs
 - retrieved chunks, expandable on demand
 
+## Run locally
+
+```bash
+git clone https://github.com/Sofipet/customer-escalation-copilot.git
+cd customer-escalation-copilot
+pip install -r requirements.txt
+
+export OPENAI_API_KEY="your_openai_api_key"
+export GENERATION_PROVIDER="openai"
+export APP_ACCESS_TOKEN="your_protection_token"
+export LIVE_REQUEST_LIMIT="3"
+
+uvicorn copilot.api:app --reload
+```
+Open http://127.0.0.1:8000
+
 ## Limitations
 
-- this is a showcase deployment, not a full enterprise production system
+- a showcase deployment, not a full enterprise production system
 - live access protection is intentionally lightweight
 - supporting-document coverage is still weaker than required-document coverage
 - warning quality can still be improved in edge cases separating stale guidance from true conflict
 - the open-source comparison model used here was too weak to replace the main baseline
+
+## Future improvements
+
+- improve retrieval beyond core required documents, especially supporting and edge-case guidance
+- sharpen warning logic and recommendation quality in borderline cases, especially for **stale guidance** vs **true conflict**
+- expand evaluation with more diverse scenarios, larger manual review, and stronger open-source model comparisons under the same setup
+- replace showcase-grade live access protection with more robust server-side access control if the app is shared more broadly
