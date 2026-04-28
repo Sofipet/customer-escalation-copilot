@@ -6,6 +6,11 @@ A retrieval-augmented support copilot for resolving quote-approval escalations u
   
 - **V1 Prototype:** [Streamlit App](https://customer-escalation-copilot-c4rcuwabge3grajo2y5bqy.streamlit.app/)
 
+## Interface preview
+
+<img width="1261" height="563" alt="Dashboard overview" src="https://github.com/user-attachments/assets/1bbf5363-93b6-4169-9ed2-dae1724d65a6" />
+
+
 ## Overview
 
 Support teams often work across fragmented documentation, overlapping guidance, and policy changes introduced across releases. This project demonstrates how a retrieval-augmented generation system can help triage escalations more consistently by retrieving relevant internal evidence, identifying likely causes, surfacing stale or conflicting guidance, and recommending the next operational step in a structured format.
