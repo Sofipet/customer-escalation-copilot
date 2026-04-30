@@ -19,7 +19,7 @@ The system is designed as a **decision-support tool**, not an autonomous agent. 
 
 ## V1 to V2 evolution
 
-The project began as a simpler **V1 Streamlit prototype** focused on retrieval and basic answer generation. In **V2**, it was redesigned as a more production-realistic decision-support system with a structured response schema, stronger retrieval setup, explicit evaluation, a protected live mode, a custom UI, and Dockerized deployment. The shift from V1 to V2 was not only a UI upgrade, but a move toward a more disciplined product and engineering architecture.
+The project began as a simpler **V1 Streamlit prototype** focused on retrieval and basic answer generation. In **V2**, it was redesigned as a more production-realistic decision-support system with a structured response schema, stronger retrieval setup, explicit evaluation, a protected live mode, a custom UI, and Dockerized deployment. 
 
 ## What the system does
 
