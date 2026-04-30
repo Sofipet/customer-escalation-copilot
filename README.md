@@ -155,7 +155,6 @@ Open http://127.0.0.1:8000
 ## Limitations
 
 - a showcase deployment, not a full enterprise production system
-- live access protection is intentionally lightweight
 - supporting-document coverage is still weaker than required-document coverage
 - warning quality can still be improved in edge cases separating stale guidance from true conflict
 - the open-source comparison model used here was too weak to replace the main baseline
@@ -165,4 +164,3 @@ Open http://127.0.0.1:8000
 - improve retrieval beyond core required documents, especially supporting and edge-case guidance
 - sharpen warning logic and recommendation quality in borderline cases, especially for **stale guidance** vs **true conflict**
 - expand evaluation with more diverse scenarios, larger manual review, and stronger open-source model comparisons under the same setup
-- replace showcase-grade live access protection with more robust server-side access control if the app is shared more broadly
